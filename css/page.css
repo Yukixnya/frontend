@@ -1,0 +1,15 @@
+body{
+    animation: move 0.4s ease-in-out;
+}
+.content-wrapper {
+    animation: move 0.4s ease-in-out;
+}
+
+@keyframes move {
+    0% {
+        transform: skew(0deg) translateX(-100px);
+     }
+    100% {
+        transform: skew(0deg);
+    }
+}

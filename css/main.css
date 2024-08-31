@@ -1,0 +1,121 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+}
+
+.home{
+    background: linear-gradient(to bottom, #333, #444);
+    height: 100%;
+}
+
+.container {
+    padding: 20px;
+    width: 70%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                0 10px 10px rgba(0,0,0,0.22);
+}
+
+header {
+    color: #fff;
+    padding: 40px 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+nav{
+    color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 20%;
+}
+
+figure{
+    width: 150px;
+    margin: 0 auto;
+}
+
+.logo  figure img{
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+}
+
+a:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+.hero {
+    color: #fff;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin : 50px 0;
+}
+
+.hero p{
+    margin: 50px;
+    font-size: 20px;
+}
+
+.hero button{
+    border-radius: 20px;
+	border: 1px solid rgb(72, 72, 72);
+	background-color: white;
+	color: rgb(72, 72, 72);
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+    margin-bottom: 50px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+    
+.hero button a {
+    color: rgb(72, 72, 72);
+    text-decoration: none;
+}
+
+.hero button:hover{
+    cursor: pointer;
+    box-shadow: 0px 1px 20px rgb(18, 18, 18);
+}
+
+
+
