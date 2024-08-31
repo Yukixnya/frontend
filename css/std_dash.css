@@ -16,7 +16,9 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 35px;
+    margin-left: 80px;
   }
   
   nav li {
@@ -37,7 +39,7 @@ body {
   
   .post-feed {
     background-color: #f7f7f7;
-    width: 1000px;
+    width: 900px;
     padding: 1em;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -109,4 +111,32 @@ body {
 
   .post-content {
     overflow-wrap: break-word;
+  }
+
+  .logo {
+    height:50px;
+    margin-left: 5px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    filter: brightness(85%);
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+  }
+  
+  nav .logo {
+    order: -1; 
+  }
+
+  .group{
+    height: 50px;
+    filter: brightness(150%);
+    margin-left: 160px;
+    text-shadow: 0 0 10px rgba(225, 225, 225, 10);
   }
