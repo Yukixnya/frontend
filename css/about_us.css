@@ -75,7 +75,7 @@ nav a {
     font-weight: normal;
 }
 
-.about_us_content{
+.about_us{
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -131,42 +131,14 @@ nav a {
         transform: rotate(360deg);
     }
 }
-
-.about_us_text{
+.about-info{
     width: 47%;
-    margin-right:140px;
-    text-align:justify;
+    margin-top: 60px;
+    margin-right: 140px;
+    text-align: justify;
 }
 
-.alumni_text,.std_text{
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-top:50px;
-}
-
-.std_text{
-    margin-top:20px;
-}
-
-.vertical_text {
-    color: rgb(72, 72, 72);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    margin-right: 20px;
-    font-size: 18px;
-    margin-top:10px;
-}
-
-.std_text .vertical_text{
-    transform:rotate(360deg);
-    margin-right:0;
-    margin-left:20px;
-}
-  
-.about_info p{
+.about-info p{
     color: rgb(72, 72, 72);
     line-height: 25px;
 }
-
-
