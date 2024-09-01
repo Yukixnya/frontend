@@ -11,13 +11,17 @@
   <header>
     <nav>
       <div class="logo">
-          <img src="images/pu_logo_line.png" alt="logo" class="logo">    
+          <img src="images/pu_logo_line.png" alt="pu_logo" class="logo">    
       </div>
-      <a href="main.html" class="group"><img src="images/logo_uplift.png" alt="" class="group"></a>
+      <a href="main.html" class="group"><img src="images/logo_uplift.png" alt="Uplift" class="group"></a>
       <ul>
         <li><a href="std_dash.html" class="navs">Home</a></li>
-        <li><a href="#" class="navs">Profile</a></li>
-        <li><a href="login_std.html" class="navs">Logout</a></li>    <!--   session end    -->
+        <li><a href="about.html" class="navs">About</a></li>
+        <ul>
+          <div class="profile-container">
+            <a href="#" class="navs"><img src="images/profile.png" alt="profile" class="profile" title="Profile"></a>
+          </div>
+      </ul>   
       </ul>
     </nav>
   </header>
@@ -28,102 +32,6 @@
       </ul>
     </section>
   </main>
-  <script>
-    const posts = [
-      {
-        id: 1,
-        author: "Yuki",
-        content: "I'm doing well",
-        images: [
-          "images/wp10474992-anime-programming-wallpapers.png",
-          "https://picsum.photos/200/301"
-        ],
-        likes: 10,
-        follows: 5
-      },
-      {
-        id: 2,
-        author: "Asuna",
-        content: "Sword Art Online",
-        images: [
-          "https://picsum.photos/200/302",
-          "https://picsum.photos/200/303"
-        ],
-        likes: 20,
-        follows: 10
-      },
-      {
-        id: 3,
-        author: "Xiao Yan",
-        content: "Doupo Cangqiong",
-        images: [
-          "https://picsum.photos/200/305",
-          "https://picsum.photos/200/305"
-        ],
-        likes: 30,
-        follows: 15
-      }
-    ];
-
-    const postList = document.getElementById("post-list");
-    posts.forEach((post) => {
-      const postHTML = `
-        <li class="post">
-          <h3 class="post-author">${post.author}</h3>
-          <div class="post-content">
-            ${post.content}
-            ${post.images.map((image) => `
-              <img src="${image}" alt="${post.author}'s post image" class="post-image">
-            `).join('')}
-          </div>
-          <button class="like-button">Like (${post.likes})</button>
-          <button class="follow-button">Follow (${post.follows})</button>
-        </li>
-      `;
-      postList.insertAdjacentHTML("beforeend", postHTML);
-    });
-
-    const images = document.querySelectorAll('.post-image');
-
-    images.forEach((image) => {
-      image.style.maxWidth = '100%';
-      image.style.height = 'auto';
-    });
-
-    const likeButtons = document.querySelectorAll(".like-button");
-    const followButtons = document.querySelectorAll(".follow-button");
-
-    likeButtons.forEach((button) => {
-    let likes = parseInt(button.textContent.match(/\d+/)[0]);
-    let isLiked = false;
-    button.addEventListener("click", () => {
-      if (!isLiked) {
-        likes += 1;
-        isLiked = true;
-      } else {
-        likes -= 1;
-        isLiked = false;
-      }
-      button.textContent = `Like (${likes})`;
-      console.log("Like button clicked!");
-    });
-  });
-
-    followButtons.forEach((button) => {
-      let follows = parseInt(button.textContent.match(/\d+/)[0]);
-      let isfollowed = false;
-      button.addEventListener("click", () => {
-        if (!isfollowed) {
-        follows += 1;
-        isfollowed = true;
-      } else {
-        follows -= 1;
-        isfollowed = false;
-      }
-        button.textContent = `Follow (${follows})`;
-        console.log("Follow button clicked!");
-      });
-    });
-  </script>
+  <script type="text/javascript" src="js/std_dash.js"></script>
 </body>
 </html>
