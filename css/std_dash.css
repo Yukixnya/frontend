@@ -16,9 +16,9 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 20px;
-    margin-left: 40px;
+    margin-right: 70px;
   }
   
   nav li {
@@ -73,19 +73,6 @@ body {
   .post-content {
     margin-bottom: 20px;
   }
-  
-  .like-button, .follow-button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .like-button:hover, .follow-button:hover {
-    background-color: #444;
-  }
 
   .post-image {
     max-width: 100%;
@@ -102,7 +89,7 @@ body {
   }
  .navs:active{
     transform: scale(0.97);
- }
+  }
 
   button {
     transition: all 0.s ease-in-out;
@@ -148,7 +135,7 @@ body {
 
   .profile-container {
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 60%;
     transform: translateY(-50%);
   }
@@ -157,7 +144,6 @@ body {
     height: 40px;
     width: 45px;
   }
-
 
   .comment-button{
     position: relative;
@@ -171,9 +157,79 @@ body {
     position: relative;
     height: 40px;
     top: 14px;
+    /* cursor: pointer; */
   }
 
   button:active {
     transform: scale(1);
     /* transition: all 0.2s ease-in-out; */
+  }
+
+  .like-icon{
+    position: relative;
+    height: 35px;
+    top: 12px;
+    cursor: pointer;
+  }
+
+  .follow-icon{
+    position: relative;
+    height: 37px;
+    top: 12px;
+    cursor: pointer;
+  }
+
+  .like-button, .follow-button {
+    background: transparent;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: -15px;
+  }
+
+  .profile-dropdown {
+    position: absolute;
+    width: 110px;
+    top: 100%;
+    right: -80px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: none;
+  }
+  .profile-dropdown li {
+    margin-bottom: 10px;
+  }
+  .profile-dropdown li a {
+    text-decoration: none;
+    display: flex;
+    color: #333;
+  }
+  .profile-dropdown li a:hover {
+    color: #666;
+  }
+
+  .logout:active {
+    transform: scale(0.97);
+  }
+
+  .profile-container:hover .profile-dropdown {
+    display: block;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  nav ul li {
+    margin-right: 20px;
+  }
+  nav ul li:last-child {
+    margin-right: 0;
+  }
+  .user-photo{
+    margin-right: -20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
   }
