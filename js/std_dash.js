@@ -7,6 +7,7 @@ const posts = [
         "https://th.bing.com/th/id/OIP.VHlGPWhBYD-Dszw3x31U4gHaFj?rs=1&pid=ImgDetMain",
         "https://th.bing.com/th/id/OIP.Sau01Xy7UjYNFG1eJ6fn0AHaEx?rs=1&pid=ImgDetMain"
       ],
+      user: "std: ",
       likes: 10,
       follows: 5,
       comments: []
@@ -19,6 +20,7 @@ const posts = [
         "https://th.bing.com/th/id/OIP.ssNlo69fnDpQwEFD_kwn1gHaEw?rs=1&pid=ImgDetMain",
         "https://1.bp.blogspot.com/-rhFVoe1DJhI/XRtgswdwIJI/AAAAAAAAF7Q/OHH932ja-IU6a9w0OehGQdAZslOpUXifACLcBGAs/s1600/ai-emotions.jpg"
       ],
+      user: "std: ",
       likes: 20,
       follows: 10,
       comments: []
@@ -31,6 +33,7 @@ const posts = [
         "https://i.pinimg.com/originals/31/e4/50/31e45088577d45711b528cb037402338.jpg",
         "https://th.bing.com/th/id/R.e9e99fd09763b72d664b9a181a7b9030?rik=61UscGhb4Lhg%2bQ&riu=http%3a%2f%2fwww.cityheadshots.com%2fuploads%2f5%2f1%2f2%2f1%2f5121840%2fistock-1150200782_orig.jpg&ehk=1S1eNfFrYQZ4ZW%2bvLh3SNy2mE8SlaKCC%2bp5W5FB5P8U%3d&risl=&pid=ImgRaw&r=0"
       ],
+      user: "std: ",
       likes: 30,
       follows: 15,
       comments: []
@@ -138,6 +141,8 @@ const posts = [
     });
   });
   
+
+
   submitCommentButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       const commentInput = button.previousElementSibling;
