@@ -213,7 +213,7 @@ body {
     color: #666;
   }
 
-  .logout:active {
+  .user-dropdown:active {
     transform: scale(0.97);
   }
 
