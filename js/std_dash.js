@@ -148,7 +148,7 @@ const posts = [
         const commentsList = button.parentNode.parentNode.querySelector(".comments-list");
         const commentHTML = `
           <li class="comment">
-            <span class="comment-author">${post.author}</span>
+            <span class="comment-user">${post.user}</span>
             <span class="comment-text">${commentText}</span>
           </li>
         `;
