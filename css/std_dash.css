@@ -104,16 +104,6 @@ body {
     overflow-wrap: break-word;
   }
 
-  .group {
-    height:50px;
-    margin-left: 5px;
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    filter: brightness(130%);
-  }
-
   nav {
     display: flex;
     align-items: center;
@@ -127,10 +117,23 @@ body {
   }
 
   .logo{
-    height: 20px;
+    display: block;
+    height: 12px;
     filter: brightness(90%);
-    margin-left: 90px;
+    margin-top: 12px;
+    margin-left: 5px;
     text-shadow: 0 0 10px rgba(225, 225, 225, 10);
+  }
+
+  .group {
+    height:50px;
+    margin-bottom: 114px;
+    margin-left: 10px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    filter: brightness(130%);
   }
 
   .profile-container {
