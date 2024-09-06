@@ -18,7 +18,7 @@ function checkSession() {
   })
   .catch((error) => {
     console.error('Session check failed:', error);
-    window.location.href = 'login_stdb.html'; // Redirect to login if session is invalid
+    window.location.href = 'login_std.html'; // Redirect to login if session is invalid
   });
 }
 
