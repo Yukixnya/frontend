@@ -28,6 +28,16 @@
     background-color:white;
     padding:10px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.each-post:hover{
+    background-color: rgb(51, 51, 51,0.1);
+}
+
+.each-post:active{
+    background-color: rgb(51, 51, 51,0.3);
+    transition: all 0.2s ease-in-out;
 }
 
 .post-img{
@@ -35,7 +45,7 @@
     height:auto;
 }
 
-img{
+.post-img img{
     border-radius:10px;
     height:100%;
     width: 100%;
@@ -53,6 +63,8 @@ img{
 }
 
 .like{
+    top: 5px;
+    position: relative;
     margin:10px 0;
     color:grey;
 }

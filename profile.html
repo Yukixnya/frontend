@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/page.css">
+    <title>Profile</title>
+    <style>
+        body{
+            padding: 2%;
+        }
+        .profile-main{
+            height: 90vh;
+            width: 70vh;
+            background-color: rgb(51, 51, 51,0.8);
+            box-shadow: 0 0 10px rgb(0,0,0);
+            justify-content: center;
+            align-items: center;
+            display: block;
+        }
+        .user-profile {
+            border-radius: 50%;
+            height: 200px;
+            width: 200px;
+            margin-left: 110px;
+            margin-top: 70px;
+            position: relative;  /* for over display*/
+        }
+        .menu{
+            margin-left:167px;
+            margin-top:20px;
+        }
+        .user-profile-change {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            position: absolute;  /* for over display*/
+            top: 240px;
+            left: 300px;
+            transition: all 0.3s ease-in-out;
+            /* cursor: pointer; */
+        }
+        .user-profile-change:active{
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="profile-main">
+            <img src="images/user.png" alt="" class="user-profile">
+            <img src="images/cm_prof.png" alt="" class="user-profile-change">
+             <div class="menu"><p>jhgdcjhsvdk</p></div>
+        </div>
+    </section>
+</body>
+</html>
