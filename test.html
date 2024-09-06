@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: none;
+        /* z-index: 9; */
+        }
+
+        .popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        z-index: 9;
+        }
+
+        .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        transition: opacity 0.3s;
+        /* z-index: 1; */
+        }
+
+        .popup-container.show {
+        display: block;
+        }
+
+        .popup-container.show .overlay {
+        opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <button class="compose-button">Compose</button>
+  
+    <div class="popup-container">
+
+      <div class="popup">
+        <h2>Compose</h2>
+        <input type="text" placeholder="To">
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Message"></textarea>
+        <button>Send</button>
+      </div>
+
+      <div class="overlay"></div>
+    </div>
+    <script>
+        const popupContainer = document.querySelector('.popup-container');
+        const overlay = document.querySelector('.overlay');
+
+        document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('compose-button')) {
+            popupContainer.classList.add('show');
+        }
+        });
+
+        overlay.addEventListener('click', () => {
+        popupContainer.classList.remove('show');
+        });
+    </script>
+</body>
+</html>

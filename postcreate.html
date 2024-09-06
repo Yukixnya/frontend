@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <link rel="stylesheet" type="text/css" href="css/postcreate.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Post</h1>
+        <form id="postForm">
+            <div class="form-group">
+                <label for="postTitle">Post Title:</label>
+                <input type="text" id="postTitle" name="postTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="postDesc">Post Description:</label>
+                <textarea id="postDesc" name="postDesc" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imageFile">Upload Image:</label>
+                <input type="file" id="imageFile" name="imageFile" accept="image/*" required>
+            </div>
+            <button type="submit">Submit Post</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script type="text/javascript" src="js/postcreate.js"></script>
+</body>
+</html>
