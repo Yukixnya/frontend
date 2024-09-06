@@ -131,15 +131,15 @@
             
             .then(data => {
             console.log('Login Success:', data);
-                // Add the session ID extraction code here
-                const sessionIdMatch = data.match(/sessionId: (\S+)/);
-                if (sessionIdMatch && sessionIdMatch[1]) {
-                    const sessionId = sessionIdMatch[1];
-                    localStorage.setItem("sessionId", sessionId);
-                    window.location.href = 'std_dashb.html';
-                } else {
-                    console.error('Session ID not found in response');
-                }
+            const sessionIdMatch = data.match(/sessionId: (\S+)/);
+            if (sessionIdMatch && sessionIdMatch[1]) {
+                const sessionId = sessionIdMatch[1];
+                console.log('Session ID:', sessionId);
+                localStorage.setItem("sessionId", sessionId);
+                window.location.href = 'std_dashb.html';
+            } else {
+                console.error('Session ID not found in response');
+            }
             })
             .catch((error) => {
                 console.error('Login Error:', error);
