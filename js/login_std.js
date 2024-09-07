@@ -15,7 +15,7 @@
             };
 
             // Send data as JSON using fetch
-            fetch('http://localhost:8080/student/register', {
+            fetch('http://127.0.0.1:8080/student/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +53,7 @@
             };
 
             // Use fetch to send a POST request
-            fetch('http://localhost:8080/student/login', {
+            fetch('http://127.0.0.1:8080/student/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -73,7 +73,7 @@
             const sessionIdMatch = data.match(/sessionId: (\S+)/);
             if (sessionIdMatch && sessionIdMatch[1]) {
                 const sessionId = sessionIdMatch[1];
-                console.log('Session ID:', sessionId);
+                // console.log('Session ID:', sessionId);
                 localStorage.setItem("sessionId", sessionId);
                 window.location.href = 'std_dashb.html';
             } else {

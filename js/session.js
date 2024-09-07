@@ -1,7 +1,7 @@
 const sessionId = localStorage.getItem("sessionId");
 // Function to check if the session is valid by making a request to the backend
 function checkSession() {
-  fetch('http://localhost:8080/student/checkSession', {
+  fetch('http://localhost:5500/student/checkSession', {
     method: 'GET',
     'Authorization': `Bearer ${sessionId}` // Ensure cookies are sent with the request
   })
