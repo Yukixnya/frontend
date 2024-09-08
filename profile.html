@@ -8,8 +8,13 @@
     <style>
         body{
             padding: 2%;
+            display: flex;
+            gap: 60px;
         }
+
         .profile-main{
+            margin-left: 50px;
+            margin-right: 50px;
             height: 90vh;
             width: 70vh;
             background-color: rgb(51, 51, 51,0.8);
@@ -31,12 +36,10 @@
             margin-top:20px;
         }
         .user-profile-change {
-            height: 40px;
-            width: 40px;
             border-radius: 50%;
-            position: absolute;  /* for over display*/
-            top: 240px;
-            left: 300px;
+            position: relative;  /* for over display*/
+            top: -20px;
+            left: -45px;
             transition: all 0.3s ease-in-out;
             /* cursor: pointer; */
         }
@@ -44,15 +47,103 @@
             transform: scale(1.1);
             transition: all 0.3s ease-in-out;
         }
+        .side-profile-up-left{
+            height: 40vh;
+            width: 40vh;
+            background-color: rgb(51, 51, 51,0.5);
+            box-shadow: 0 0 10px rgb(0,0,0);
+        }
+        .side-profile-up-right{
+            margin-top: 55px;
+            height: 40vh;
+            width: 40vh;
+            background-color: rgb(51, 51, 51,0.5);
+            box-shadow: 0 0 10px rgb(0,0,0);
+        }
+        ul{
+            position: relative;
+            top: 20px;
+        }
+        ul li{
+            top: 40px;
+            list-style: none;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            left:60px;
+            border: 1px solid white;
+            width: 50%;
+            font-size: 20px;
+            padding:1%;
+            text-align: center;
+            /* background-color: aliceblue; */
+        }
+        ul li:active{
+            transform:scale(0.99);
+        }
+        a{
+            text-decoration: none;
+        }
+        .user-detail{
+            position: relative;
+            left: 50px;
+        }
     </style>
 </head>
 <body>
     <section>
         <div class="profile-main">
             <img src="images/user.png" alt="" class="user-profile">
-            <img src="images/cm_prof.png" alt="" class="user-profile-change">
-             <div class="menu"><p>jhgdcjhsvdk</p></div>
+            <img src="images/cm_prof.png" alt="" class="user-profile-change" height="40px" width="40px">
+            <ul>
+                <div class="user-detail">
+                    <p id="name"></p>
+                    <p id="university"></p>
+                    <p id="semester"></p>
+                    <p id="year"></p>
+                    <p id="email"></p>
+                </div>
+                <li><a href="login_std.html">Logout</a></li>
+            </ul>
         </div>
     </section>
+    <section>
+        <div class="side-profile-up-left">
+            
+        </div>
+        <div class="side-profile-up-right">
+            
+        </div>
+    </section>
+    <section>
+        <div class="side-profile-up-left">
+            
+        </div>
+        <div class="side-profile-up-right">
+            
+        </div>
+    </section>
+    <script>
+        const nameElement = document.getElementById('name');
+        const universityElement = document.getElementById('university');
+        const yearElement = document.getElementById('year');
+        const emailElement = document.getElementById('email');
+
+        const userData = {
+        name: 'Yuki',
+        university: 'University_xyz',
+        semester: '3',
+        year: '2',
+        email: 'yuki@gmail.com'
+        };
+
+        const space = '\u00A0'.repeat(5);
+
+        nameElement.textContent = `Name:${space} ${userData.name}`;
+        universityElement.textContent = `University:${space} ${userData.university}`;
+        yearElement.textContent = `Year: ${userData.year} ${space} Sem: ${userData.semester}`;        
+        emailElement.textContent = `Email:${space} ${userData.email}`;
+    </script>
 </body>
 </html>
