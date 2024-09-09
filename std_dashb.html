@@ -7,8 +7,67 @@
     <link rel="stylesheet" href="css/page.css">
     <link rel="stylesheet" href="css/std_dashb.css">
     <!-- <script src="js/session.js"></script> -->
+    <style>
+        .popup-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: none;
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            z-index: 9;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .popup-container.show {
+            display: block;
+        }
+
+        .popup-container.show .overlay {
+            opacity: 1;
+        }
+
+        .like-container, .follow-container, .comment-container {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .like-icon, .follow-icon,.comment-icon {
+            width: 24px;
+            height: 24px;
+            top: 5px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-<body> 
+<body>
     <header>
         <nav>
           <div class="logo">
@@ -32,67 +91,177 @@
     <section>
         <div class="container-fluid">
             <div class="container">
-                    <div id="postsContainer" class="posts"></div>
+                <div id="postsContainer" class="posts"></div>
             </div>
         </div>
     </section>
 
+    <div class="popup-container">
+        <div class="popup">
+            <h3 id="popup-title"></h3>
+            <p id="popup-content"></p>
+            <div id="popup-image"></div>
+            <div class="like-container">
+                <img src="images/likes.png" class="like-icon">
+                <span class="like-count">0</span>
+            </div>
+            <div class="follow-container">
+                <img src="images/followers.png" class="follow-icon">
+                <span class="follow-count">0</span>
+            </div>
+            <div class="comment-container">
+                <img src="images/comments.png" class="comment-icon">
+                <span class="comment-count">0</span>
+                <button class="comment-button">Comment</button>
+            </div>
+            <div class="comment-box" style="display: none;">
+                <input type="text" class="comment-input" placeholder="Write a comment...">
+                <button class="submit-comment-button">Submit</button>
+
+                <h4>Comments</h4>
+                <ul class="comments-list"></ul>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+
     <script>
-    function fetchPosts() {
-    fetch("http://localhost:8080/student/posts")
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Failed to fetch posts');
-            }
-        })
-        .then(data => {
-            const postsContainer = document.getElementById("postsContainer");
-            postsContainer.innerHTML = "";
+        const popupContainer = document.querySelector('.popup-container');
+        const overlay = document.querySelector('.overlay');
 
-            data.forEach(post => {
-                const postElement = document.createElement("div");
-                postElement.className = "each-post";
+        function fetchPosts() {
+            fetch("http://localhost:8080/student/posts")
+                .then(response => response.ok ? response.json() : Promise.reject('Failed to fetch posts'))
+                .then(data => {
+                    const postsContainer = document.getElementById("postsContainer");
+                    postsContainer.innerHTML = "";
 
-                if (post.imageUrl) {
-                    const postImage = document.createElement("div");
-                    postImage.className = "post-img";
-                    const postImageElement = document.createElement("img");
-                    postImageElement.src = post.imageUrl;
-                    postImage.appendChild(postImageElement);
-                    postElement.appendChild(postImage);
-                }
+                    data.forEach(post => {
+                        const postElement = document.createElement("div");
+                        postElement.className = "each-post";
+                        postElement.dataset.postId = post.id;
 
-                const postContent = document.createElement("div");
-                postContent.className = "post-content";
+                        if (post.imageUrl) {
+                            const postImage = document.createElement("div");
+                            postImage.className = "post-img";
+                            const postImageElement = document.createElement("img");
+                            postImageElement.src = post.imageUrl;
+                            postImage.appendChild(postImageElement);
+                            postElement.appendChild(postImage);
+                        }
 
-                const postTitle = document.createElement("div");
-                postTitle.className = "title";
-                postTitle.textContent = post.postTitle;
-                postContent.appendChild(postTitle);
+                        const postContent = document.createElement("div");
+                        postContent.className = "post-content";
 
-                const postDesc = document.createElement("div");
-                postDesc.className = "description";
-                postDesc.textContent = post.postDesc;
-                postContent.appendChild(postDesc);
+                        const postTitle = document.createElement("div");
+                        postTitle.className = "title";
+                        postTitle.textContent = post.postTitle;
+                        postContent.appendChild(postTitle);
+                        const postDesc = document.createElement("div");
+                        postDesc.className = "description";
+                        postDesc.textContent = post.postDesc;
+                        postContent.appendChild(postDesc);
 
-                const postLike = document.createElement("div");
-                postLike.className = "like";
-                postLike.textContent = "11 likes | 13 comments";
-                postContent.appendChild(postLike);
+                        const postLike = document.createElement("div");
+                        postLike.className = "like";
+                        postLike.innerHTML = `
+                            <img src="images/likes.png" class="like-icon">
+                            <span class="like-count">${post.postLike}</span>
+                        `;
+                        postContent.appendChild(postLike);
 
-                postElement.appendChild(postContent);
-                postsContainer.appendChild(postElement);
-            });
-        })
-        .catch(error => {
-            console.error(error.message);
+                        postElement.appendChild(postContent);
+
+                        postElement.addEventListener('click', () => {
+                            const popupTitle = document.getElementById("popup-title");
+                            const popupContent = document.getElementById("popup-content");
+                            const popupImage = document.getElementById("popup-image");
+                            const popupLikeIcon = document.querySelector('.popup .like-icon');
+                            const popupLikeCount = document.querySelector('.popup .like-count');
+                            const popupFollowIcon = document.querySelector('.popup .follow-icon');
+                            const popupFollowCount = document.querySelector('.popup .follow-count');
+
+                            popupTitle.textContent = post.postTitle;
+                            popupContent.textContent = post.postDesc;
+
+                            if (post.imageUrl) {
+                                popupImage.innerHTML = `<img src="${post.imageUrl}">`;
+                            } else {
+                                popupImage.textContent = "";
+                            }
+
+                            popupLikeCount.textContent = post.postLike;
+                            popupFollowCount.textContent = post.postFollowers;
+
+                            popupContainer.classList.add('show');
+
+                            popupLikeIcon.addEventListener('click', () => {
+                                let likes = parseInt(popupLikeCount.textContent);
+                                if (!post.isLiked) {
+                                    likes += 1;
+                                    post.isLiked = true;
+                                } else {
+                                    likes -= 1;
+                                    post.isLiked = false;
+                                }
+                                popupLikeCount.textContent = likes;
+                            });
+
+                            popupFollowIcon.addEventListener('click', () => {
+                                let followers = parseInt(popupFollowCount.textContent);
+                                if (!post.isFollowed) {
+                                    followers += 1;
+                                    post.isFollowed = true;
+                                } else {
+                                    followers -= 1;
+                                    post.isFollowed = false;
+                                }
+                                popupFollowCount.textContent = followers;
+                            });
+
+                            const commentButton = document.querySelector('.comment-button');
+                            commentButton.addEventListener('click', () => {
+                                const commentBox = document.querySelector('.comment-box');
+                                commentBox.style.display = commentBox.style.display === 'block' ? 'none' : 'block';
+                                const commentInput = document.querySelector('.comment-input');
+                                if (commentBox.style.display === 'block') {
+                                    commentInput.focus();
+                                }
+                            });
+           
+                            const submitCommentButton = document.querySelector('.submit-comment-button');
+                            submitCommentButton.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const commentInput = document.querySelector('.comment-input');
+                                const commentText = commentInput.value.trim();
+                                if (commentText) {
+                                    const commentElement = document.createElement('li');
+                                    commentElement.textContent = commentText;
+                                    const commentsList = document.querySelector('.popup .comment-box .comments-list');
+                                    commentsList.appendChild(commentElement);
+
+                                    const commentCountSpan = document.querySelector('.comment-count');
+                                    commentCountSpan.textContent = parseInt(commentCountSpan.textContent) + 1;
+
+                                    commentInput.value = '';
+
+                                    const commentBox = document.querySelector('.comment-box');
+                                    commentBox.style.display = 'none';
+                                }
+                            });
+                        });
+
+                        postsContainer.appendChild(postElement);
+                    });
+                })
+                .catch(error => console.error(error));
+        }
+
+        overlay.addEventListener('click', () => {
+            popupContainer.classList.remove('show');
         });
-}
 
-// Fetch posts on page load
-window.onload = fetchPosts;
+        window.onload = fetchPosts;
     </script>
 </body>
 </html>
