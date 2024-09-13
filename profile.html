@@ -77,10 +77,16 @@
             right: 0;
             top:0;
         }
-        p{
-            margin-left: 350px;
+        .details{
+            border: 2px solid red;
+            position: absolute;
+            margin-top: 30px;
+            left: 110px;
         }
-        
+        .main_name{
+            margin-left: 350px;
+            font-size: 30px;
+        }
     </style>
 </head>
 <body>
@@ -91,20 +97,26 @@
         <div class="profile-main">
             <img src="images/user.png" alt="" class="user-profile">
             <img src="images/cm_prof.webp" alt="" class="user-profile-change" height="40px" width="40px">
-            <p id="name"></p>
-            <p id="university"></p>
-            <p id="semester"></p>
-            <p id="year"></p>
-            <p id="email"></p>
-            <p><a href="login_std.html">Logout</a></p>
+            <p id="main_name" class="main_name"></p>
+            <hr style="margin-top: 50px;">
+            <div class="details">
+                <p id="name"></p>
+                <p id="university"></p>
+                <p id="semester"></p>
+                <p id="year"></p>
+                <p id="email"></p>
+                <!-- <p><a href="login_std.html">Logout</a></p> -->
+            </div>
         </div>
     <script>
+        const main_nameElement = document.getElementById('name');
         const nameElement = document.getElementById('name');
         const universityElement = document.getElementById('university');
         const yearElement = document.getElementById('year');
         const emailElement = document.getElementById('email');
 
         const userData = {
+        main_name: 'Yuki',
         name: 'Yuki',
         university: 'University_xyz',
         semester: '3',
@@ -114,6 +126,7 @@
 
         const space = '\u00A0'.repeat(5);
 
+        main_name.textContent = `${userData.main_name}`;
         nameElement.textContent = `Name:${space} ${userData.name}`;
         universityElement.textContent = `University:${space} ${userData.university}`;
         yearElement.textContent = `Year: ${userData.year} ${space} Sem: ${userData.semester}`;        
