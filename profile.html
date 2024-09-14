@@ -106,7 +106,7 @@
 
         .setting-container {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        margin-top: 100px;
+        margin-top: 80px;
         margin-left: 440px ;
         width: 100%;
         max-width: 700px;
@@ -186,8 +186,20 @@
         .add-change-phone-section.show {
             display: block;
         }
+        .quick{
+            margin-left: 500px;
+            margin-top: 80px;
+            text-decoration: none;
+            list-style: none;
+            border: 1px solid red;
+            height: 100px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
-</head>
+</head> 
 <body>
     <header>
         
@@ -217,6 +229,9 @@
                 </div>
             </div>
         </div>
+        <div class="quick">
+            <li><a href="#">Following</a></li>
+        </div>
         <div class="setting-container">
             <h2>Account Settings</h2>
             <ul>
@@ -230,7 +245,7 @@
                         <input type="submit" value="Update Password">
                     </form>
                 </div>
-                <li><a href="#">Following</a></li>
+                
                 <li><a href="#">Connections</a></li>
                 <li><a href="#">Liked posts</a></li>
                 <!-- <li><a href="#">Follower</a></li> -->
@@ -266,7 +281,7 @@
           semester: '3',
           year: '2',
           email: 'yuki@gmail.com',
-          phone: '1234567890'
+          phone: ''
         };
 
         const space = '\u00A0'.repeat(5);
